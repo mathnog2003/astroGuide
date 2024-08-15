@@ -14,7 +14,7 @@ use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
 
 // Variáveis de acesso
-$host = "roundhouse.proxy.rlwy.net";
+$host = "mysql.railway.internal";
 $user = "root";
 $pass = "IfAZWSOZCqjzqbLDeusbseFmefDiFSeO";
 $bd = "railway";
