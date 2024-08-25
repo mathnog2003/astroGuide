@@ -291,6 +291,31 @@ if (isset($_POST['passarNivel'])) {
     }
 }
 
+if (isset($_POST['passarAstro'])) {
+    $parametros = $_POST['passarAstro'];
+    $parametrosDivididos = explode("#|#", $parametros);
+    $email = $parametrosDivididos[0];
+    $astro = $parametrosDivididos[1];
+
+    $sql = "UPDATE Usuario SET Id_Astro = ? WHERE Email_Responsavel = ?";
+    $verificarInjection = $conectar->prepare($sql);
+    if ($verificarInjection) {
+        $verificarInjection->bind_param("ss",$astro,$email);
+        
+        if ($verificarInjection->execute()) {
+            if ($verificarInjection->affected_rows > 0) {
+                echo "alterado";
+            }
+            else {
+                echo "inalterado";
+            }
+        }
+     
+    $verificarInjection->close();
+
+    }
+}
+
 if (isset($_POST['buscarPalavras'])) {
 
     $sql = "SELECT * FROM Palavra ORDER BY LENGTH(Texto) ASC;";
