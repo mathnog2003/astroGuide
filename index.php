@@ -301,7 +301,7 @@ if (isset($_POST['passarAstro'])) {
     $sql = "UPDATE Usuario SET Id_Astro = ?, Nivel_Atual = ? WHERE Email_Responsavel = ?";
     $verificarInjection = $conectar->prepare($sql);
     if ($verificarInjection) {
-        $verificarInjection->bind_param("ss",$astro,$nivel,$email);
+        $verificarInjection->bind_param("sss",$astro,$nivel,$email);
         
         if ($verificarInjection->execute()) {
             if ($verificarInjection->affected_rows > 0) {
