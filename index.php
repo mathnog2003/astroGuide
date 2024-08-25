@@ -296,11 +296,12 @@ if (isset($_POST['passarAstro'])) {
     $parametrosDivididos = explode("#|#", $parametros);
     $email = $parametrosDivididos[0];
     $astro = $parametrosDivididos[1];
+    $nivel = $parametrosDivididos[2];
 
-    $sql = "UPDATE Usuario SET Id_Astro = ? WHERE Email_Responsavel = ?";
+    $sql = "UPDATE Usuario SET Id_Astro = ?, Nivel_Atual = ? WHERE Email_Responsavel = ?";
     $verificarInjection = $conectar->prepare($sql);
     if ($verificarInjection) {
-        $verificarInjection->bind_param("ss",$astro,$email);
+        $verificarInjection->bind_param("ss",$astro,$nivel,$email);
         
         if ($verificarInjection->execute()) {
             if ($verificarInjection->affected_rows > 0) {
